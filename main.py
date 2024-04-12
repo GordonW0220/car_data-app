@@ -4,7 +4,8 @@ import numpy as np
 
 def filter_data(df,carname,transmission,price_range,year_range):
     df = df.filter(items = ['Car_Name','Year','Selling_Price','Transmission'])
-    df = df[df['Car_Name']==car_name]
+    if carname:
+        df = df[df['Car_Name']==car_name]
     df = df[df['Transmission'].isin(transmission)]
     df = df[df['Selling_Price'].between(price_range[0],price_range[1])]
     df = df[df['Year'].between(year_range[0],year_range[1])] 
